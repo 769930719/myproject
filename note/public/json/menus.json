@@ -1,0 +1,40 @@
+[{
+    "name": "系统管理",
+    "url": "#",
+    "children": [{
+        "name": "用户管理",
+        "url": "/user"
+    }, {
+        "name": "角色管理",
+        "url": "/role"
+    }, {
+        "name": "菜单管理",
+        "url": "/role"
+    }, {
+        "name": "权限管理",
+        "url": "/author"
+    }]
+
+},{
+    "name": "项目信息",
+    "url": "#",
+    "children": [{
+        "name": "项目查看",
+        "url": "/project/list"
+    }, {
+        "name": "项目管理",
+        "url": "/project/manager"
+    }]
+
+},{
+    "name": "项目笔记",
+    "url": "#",
+    "children": [{
+        "name": "查看笔记",
+        "url": "/note/list"
+    }, {
+        "name": "笔记管理",
+        "url": "/note/manager"
+    }]
+
+}]
