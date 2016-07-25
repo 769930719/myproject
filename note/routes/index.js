@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
-
+var title="MY PROJECRT"
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'MyProject' });
+  res.render('index', { title: title });
 });
-/*系统管理*/
-router.get('/system', function(req, res, next) {
-  res.send('respond with a resource');
+/*用户管理*/
+router.get('/user', function(req, res, next) {
+  res.render('user', { title: title });
 });
 
 
