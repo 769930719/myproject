@@ -11,5 +11,10 @@ router.get('/user', function(req, res, next) {
 });
 
 
+router.get('/menu/getAll', function(req, res, next) {
+ res.send('[{"name":"张三"}]');
+});
+
+
 module.exports = router;
 
