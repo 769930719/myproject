@@ -1,5 +1,4 @@
-angular.module('noteApp').controller('MenuController', ['$scope','MenuFactory', function($scope,MenuFactory) {
-    MenuFactory.getMenus().then(function(resp) {
-        console.log(resp);
-    });
+angular.module('noteApp').controller('MenuCtrl',['$scope', function($scope) {
+	var element=$('#left_menu').find('ul');
+	
 }]);
