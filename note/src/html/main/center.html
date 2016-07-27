@@ -2,8 +2,8 @@
     <div class="row">
         <div id="left_menu" class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-            <li ng-repeat="menu in menus">
-                <a href="{{menu.url}}">menu.name</a>
+            <li ng-repeat="menu in menus" ng-click="getChildren()">
+                <a href="{{menu.url}}">{{menu.name}}</a>
                 <ul class="nav nav-sidebar ">
                     <li ng-repeat="child in menu.children">
                         <a href="{{child.url}}">child.name</a>
