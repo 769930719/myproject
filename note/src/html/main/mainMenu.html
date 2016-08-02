@@ -1,0 +1,8 @@
+<ul class="nav nav-sidebar">
+	<li>
+		<a ui-sref="main.admin" ng-class="{t:$scope.$state.includes('main')}">系统管理{{$scope.$state.includes('main')}}</a>
+		<a ui-sref="main.admin.home" ng-class="{t:$scope.$state.includes('main.admin')}">项目管理</a>
+		<a ui-sref="main.admin.user"  ng-class="{t:$state.includes('dashboard.report')}">用户管理</a>
+	</li>
+</ul>
+
