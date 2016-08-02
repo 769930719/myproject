@@ -5,8 +5,7 @@ angular.module('noteApp').config(['$stateProvider', '$urlRouterProvider', functi
     $stateProvider.state('main', {
         url: '/main',
         abstract: true,
-        templateUrl: '/html/main/main.html',
-        controller:'MenuCtrl',
+        templateUrl: '/html/main/main.html'
     }).state('main.admin', {
         url: '/admin',
         templateUrl: '/html/main/center.html'
@@ -18,29 +17,29 @@ angular.module('noteApp').config(['$stateProvider', '$urlRouterProvider', functi
         templateUrl: '/html/user/list.html'
     });
 }]).run(['$rootScope', '$state', '$stateParams', function($rootScope,$state, $stateParams){
-    console.log($state.$current);
+    //console.log($state.$current);
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 }]);
 
 
 
-angular.module('noteApp').controller('MenuCtrl', ['$rootScope', '$scope', 'MenusFact', function($rootScope,$scope, MenusFact) {
-   $scope.$state.$current.name = 'main.home';
-   
+angular.module('noteApp').controller('MenuCtrl', ['$scope', 'MenusFact', function($scope, MenusFact) {
+    //$scope.$state.$current.name = 'main.home';
 
-    
-    // console.log($scope.$state.includes(""));
+
+    $scope.test = 'aaaa';
     console.log($scope.$state.includes("main"));
-   // MenusFact.getMenus().then(function(resp) {
-       // $scope.menus = resp;
+    $scope.show = $scope.$state.includes("main");
+    // MenusFact.getMenus().then(function(resp) {
+    // $scope.menus = resp;
     //      $.each($scope.$state,function(i,n){
-    // 	console.log(i);
-    // 	console.log(n);
+    //  console.log(i);
+    //  console.log(n);
     // });
     // $scope.$watch();
-         // console.info($scope.$state.includes("main.user"));
-   // }); //[{name:"系统管理",url:"",children:[{name:"用户管理",url:"#/main/user"}]}];
+    // console.info($scope.$state.includes("main.user"));
+    // }); //[{name:"系统管理",url:"",children:[{name:"用户管理",url:"#/main/user"}]}];
 
 }]);
 
@@ -53,6 +52,7 @@ angular.module('noteApp').directive('mainMenu', function() {
         },
         templateUrl: "html/main/mainMenu.html",
         link: function(scope, element, attrs, controller) {
+            console.info(scope);
             // scope.$watch('config', function(n, o, s) {
             //     var lis = $(element).children('li');
             //     lis.find('a').on('click', function() {

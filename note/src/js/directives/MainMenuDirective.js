@@ -7,6 +7,7 @@ angular.module('noteApp').directive('mainMenu', function() {
         },
         templateUrl: "html/main/mainMenu.html",
         link: function(scope, element, attrs, controller) {
+            console.info(scope);
             // scope.$watch('config', function(n, o, s) {
             //     var lis = $(element).children('li');
             //     lis.find('a').on('click', function() {

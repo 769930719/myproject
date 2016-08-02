@@ -5,8 +5,7 @@ angular.module('noteApp').config(['$stateProvider', '$urlRouterProvider', functi
     $stateProvider.state('main', {
         url: '/main',
         abstract: true,
-        templateUrl: '/html/main/main.html',
-        controller:'MenuCtrl',
+        templateUrl: '/html/main/main.html'
     }).state('main.admin', {
         url: '/admin',
         templateUrl: '/html/main/center.html'
@@ -18,7 +17,7 @@ angular.module('noteApp').config(['$stateProvider', '$urlRouterProvider', functi
         templateUrl: '/html/user/list.html'
     });
 }]).run(['$rootScope', '$state', '$stateParams', function($rootScope,$state, $stateParams){
-    console.log($state.$current);
+    //console.log($state.$current);
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 }]);
