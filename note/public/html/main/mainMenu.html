@@ -1,1 +1,1 @@
-<ul class="nav nav-sidebar"><li><a ui-sref="main.admin" ng-class="{t:true}">系统管理{{test}}</a> <a ui-sref="main.admin.home" ng-class="{t:$scope.$state.includes('main.admin')}">项目管理</a> <a ui-sref="main.admin.user" ng-class="{t:$state.includes('dashboard.report')}">用户管理</a></li></ul>
+<ul class="accordion"><li ng-repeat="menu in menus" ng-class="{active:state.includes('{{menu.url}}')}"><a href="">{{menu.name}}</a><ul><li ng-repeat="child in menu.children"><a ui-sref="{{child.url}}">{{child.name}}</a></li></ul></li></ul>

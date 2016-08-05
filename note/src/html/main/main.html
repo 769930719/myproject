@@ -11,7 +11,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">首页{{menus}}</a></li>
+                <li><a href="/">首页</a></li>
                 <li><a href="#">设置</a></li>
                 <li><a href="#">简介</a></li>
                 <li><a href="#">帮助</a></li>
@@ -25,45 +25,7 @@
 <div class="container-fluid">
     <div class="row">
         <div id="left_menu" class="col-sm-3 col-md-2 sidebar" ng-controller="MenuCtrl">
-            <ul class="nav nav-sidebar">
-                <li>
-                    <a ui-sref="main.admin" ng-class="{t:$state.includes('main')}">系统管理{{test}}</a>
-                    <a ui-sref="main.admin.home" ng-class="{t:$scope.$state.includes('main.admin')}">项目管理</a>
-                    <a ui-sref="main.admin.user" ng-class="{t:$state.includes('dashboard.report')}">用户管理</a>
-                </li>
-            </ul>
-            <!--  <main-menu config="menus"></main-menu> -->
-            <!--  <ul class="nav nav-sidebar">
-                      <li ng-repeat="menu in menus" ng-click="getChildren(this)">
-              <a href="{{menu.url}}">{{menu.name}}</a>
-              <ul class="nav nav-sidebar ">
-                  <li ng-repeat="child in menu.children">
-                      <a href="{{child.url}}">child.name</a>
-                  </li>
-              </ul>
-                      </li>  -->
-            <!--  <li><a href="#/main/test">系统管理</a>
-                   <ul class="nav nav-sidebar ">
-                       <li>
-                           <a href="#/main/test">用户管理</a></li>
-                                       <li><a href=" ">角色管理</a></li>
-                                       <li><a href=" ">功能菜单管理</a></li>
-                                       <li><a href=" ">权限管理</a></li>
-                                      </ul>
-                               </li>
-                               <li><a href="# ">我的项目</a>
-                                   <ul class="nav nav-sidebar ">
-                       <li><a href="# ">查看项目</a></li>
-                       <li><a href=" ">项目管理</a></li>
-                                   </ul>
-                               </li>
-                               <li><a href="# ">我的笔记</a>
-                                   <ul class="nav nav-sidebar ">
-                       <li><a href="# ">查看笔记</a></li>
-                       <li><a href=" ">笔记管理</a></li>
-                                   </ul>
-                               </li> -->
-            </ul>
+           <main-menu menus="menus" state="$state"></main-menu>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ">
             <ui-view></ui-view>

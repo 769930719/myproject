@@ -1,40 +1,29 @@
 [{
     "name": "系统管理",
-    "url": "#",
+    "url": "main.system",
     "children": [{
         "name": "用户管理",
-        "url": "/user"
+        "url": "main.system.user"
     }, {
         "name": "角色管理",
-        "url": "/role"
+        "url": "main.system.role"
     }, {
         "name": "菜单管理",
-        "url": "/role"
+        "url": "main.system.menu"
     }, {
         "name": "权限管理",
-        "url": "/author"
+        "url": "main.system.author"
     }]
 
 },{
-    "name": "项目信息",
-    "url": "#",
+    "name": "业务管理",
+    "url": "main.business",
     "children": [{
-        "name": "项目查看",
-        "url": "/project/list"
-    }, {
         "name": "项目管理",
-        "url": "/project/manager"
-    }]
-
-},{
-    "name": "项目笔记",
-    "url": "#",
-    "children": [{
-        "name": "查看笔记",
-        "url": "/note/list"
+        "url": "main.business.project"
     }, {
-        "name": "笔记管理",
-        "url": "/note/manager"
+        "name": "日志管理",
+        "url": "main.business.log"
     }]
 
 }]

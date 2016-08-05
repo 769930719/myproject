@@ -3,30 +3,35 @@ angular.module('noteApp').directive('mainMenu', function() {
         restrict: "EA",
         replace: true,
         scope: {
-            config: '=config'
+            menus: '=menus',
+            state: '=state'
         },
         templateUrl: "html/main/mainMenu.html",
         link: function(scope, element, attrs, controller) {
-            console.info(scope);
-            // scope.$watch('config', function(n, o, s) {
-            //     var lis = $(element).children('li');
-            //     lis.find('a').on('click', function() {
-            //         if (!$(this).attr('href')) {
-            //             var uls = $(this).next('ul');
-            //             if (uls.is(":visible")) {
-            //                 uls.slideUp('slow');
-            //                 $(element).find('.active').removeClass('active');
-            //             } else {
-            //             	$(element).find('.child').slideUp('slow');
-            //             	$(element).find('.active').removeClass('active');
-            //             	$(this).parent().addClass('active');
-            //                uls.slideDown('slow');
-            //             }
-            //         }
-            //         return false;
-            //     });
+            // console.info(scope);
+            scope.$watch('menus', function(n, o, s) {
+                // console.log(element.find('li'));
+                $('.accordion li a').on('click', function() {
+                    var ul = $(this).next('ul');
+                    var li = $(this).parent('li');
+                    if (ul.length > 0) {
+                        if (li.hasClass('active')) {
+                            if (ul.is(":visible")) {
+                                ul.hide('slow');
+                            } else {
+                                ul.show('slow');
+                            }
+                        } else {
+                            $('.active').find('ul').hide('slow');
+                            $('.active').removeClass('active');
+                            ul.show('slow');
+                            li.addClass("active");
+                        }
+                    }
+                    return false;
+                });
 
-            // });
+            });
         }
     };
 });

@@ -1,45 +1,37 @@
 var noteApp = angular.module('noteApp', ['ui.router']);
 angular.module('noteApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/main/admin/home');
+    $urlRouterProvider.otherwise('/main/home');
 
     $stateProvider.state('main', {
         url: '/main',
         abstract: true,
         templateUrl: '/html/main/main.html'
-    }).state('main.admin', {
-        url: '/admin',
-        templateUrl: '/html/main/center.html'
-    }).state('main.admin.home', {
+    }).state('main.home', {
         url: '/home',
-        templateUrl: '/html/main/2.html'
-    }).state('main.admin.user', {
-        url: '/users',
-        templateUrl: '/html/user/list.html'
+        templateUrl: '/html/main/home.html'
+    }).state('main.system', {
+        url: '/system',
+        abstract: true,
+        templateUrl: '/html/system/index.html'
+    }).state('main.system.user', {
+        url: '/user',
+        templateUrl: '/html/system/user/index.html'
+    }).state('main.system.role', {
+        url: '/role',
+        templateUrl: '/html/system/role/index.html'
     });
-}]).run(['$rootScope', '$state', '$stateParams', function($rootScope,$state, $stateParams){
+}]).run(['$rootScope', '$state', '$stateParams', function($rootScope, $state, $stateParams) {
     //console.log($state.$current);
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 }]);
 
-
-
 angular.module('noteApp').controller('MenuCtrl', ['$scope', 'MenusFact', function($scope, MenusFact) {
-    //$scope.$state.$current.name = 'main.home';
 
-
-    $scope.test = 'aaaa';
-    console.log($scope.$state.includes("main"));
-    $scope.show = $scope.$state.includes("main");
-    // MenusFact.getMenus().then(function(resp) {
-    // $scope.menus = resp;
-    //      $.each($scope.$state,function(i,n){
-    //  console.log(i);
-    //  console.log(n);
-    // });
-    // $scope.$watch();
-    // console.info($scope.$state.includes("main.user"));
-    // }); //[{name:"系统管理",url:"",children:[{name:"用户管理",url:"#/main/user"}]}];
+    MenusFact.getMenus().then(function(resp) {
+        console.log(resp);
+        $scope.menus = resp;
+    });
 
 }]);
 
@@ -48,30 +40,35 @@ angular.module('noteApp').directive('mainMenu', function() {
         restrict: "EA",
         replace: true,
         scope: {
-            config: '=config'
+            menus: '=menus',
+            state: '=state'
         },
         templateUrl: "html/main/mainMenu.html",
         link: function(scope, element, attrs, controller) {
-            console.info(scope);
-            // scope.$watch('config', function(n, o, s) {
-            //     var lis = $(element).children('li');
-            //     lis.find('a').on('click', function() {
-            //         if (!$(this).attr('href')) {
-            //             var uls = $(this).next('ul');
-            //             if (uls.is(":visible")) {
-            //                 uls.slideUp('slow');
-            //                 $(element).find('.active').removeClass('active');
-            //             } else {
-            //             	$(element).find('.child').slideUp('slow');
-            //             	$(element).find('.active').removeClass('active');
-            //             	$(this).parent().addClass('active');
-            //                uls.slideDown('slow');
-            //             }
-            //         }
-            //         return false;
-            //     });
+            // console.info(scope);
+            scope.$watch('menus', function(n, o, s) {
+                // console.log(element.find('li'));
+                $('.accordion li a').on('click', function() {
+                    var ul = $(this).next('ul');
+                    var li = $(this).parent('li');
+                    if (ul.length > 0) {
+                        if (li.hasClass('active')) {
+                            if (ul.is(":visible")) {
+                                ul.hide('slow');
+                            } else {
+                                ul.show('slow');
+                            }
+                        } else {
+                            $('.active').find('ul').hide('slow');
+                            $('.active').removeClass('active');
+                            ul.show('slow');
+                            li.addClass("active");
+                        }
+                    }
+                    return false;
+                });
 
-            // });
+            });
         }
     };
 });
@@ -80,7 +77,7 @@ angular.module('noteApp').factory('MenusFact', ['$http', '$q', function($http, $
     var service = {};
     service.getMenus = function() {
         var deferred = $q.defer();
-        $http.get('/menu/getAll').success(function(response, status, headers, config) {
+        $http.get('/json/menus.json').success(function(response, status, headers, config) {
             deferred.resolve(response);
         }).error(function(response, status, headers, config) {
             deferred.reject(response);
